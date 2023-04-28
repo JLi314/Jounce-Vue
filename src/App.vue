@@ -1,10 +1,17 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+import Home from './components/Home.vue';
+
 </script>
 
 <template>
-  <HelloWorld msg="Vite + Vue" />
+  <Home />
 </template>
 
 <style scoped>
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  background-color: black;
+}
 </style>
