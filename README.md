@@ -1,7 +1,9 @@
-# Vue 3 + Vite
+Why is this Website called Jounce? Well, it's as simple as a snap ... literally.
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+To start, this is a neat little site where you can get constantly updated information on your favourite science documentaries.
 
-## Recommended IDE Setup
+Whether you want posters, descriptions, or trailers we have it all! Everything can be found in a snap due to the simple layout of the website.
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+Now you might be wondering, why would it be called Jounce then?
+
+Well, it's a little physics pun. The fourth dertivative of position is often called a snap, but it is also referred to as a jounce occasionally. So the name Jounce reflects the user-friendly and fast site experience one would expect from a site described as somewhere you can get information from quick as a snap, but with a twist!
