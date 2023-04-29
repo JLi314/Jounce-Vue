@@ -1,88 +1,111 @@
 <script setup>
-import { ref } from "vue";
+import axios from 'axios';
+let API_KEY = "612e2115115fc594a638c0a80e0a2724";
 
-// defineProps({
-//   msg: String,
-// });
-
-// const test = () => {
-//   console.log("reached here");
-// };
-const faders = document.querySelectorAll(".fade-in");
-
-const appearOptions = {
-  threshold: 0.25,
-  rootMargin: "0px 0px -250px 0px",
+const getTMDBData = async (url) => {
+  return (await axios.get(url)).data;
 };
 
-const appearOnScroll = new IntersectionObserver(function (
-  entries,
-  appearOnScroll
-) {
-  entries.forEach((entry) => {
-    if (!entry.isIntersecting) {
-      return;
-    } else {
-      entry.target.classList.add("appear");
-      appearOnScroll.unobserve(entry.target);
-    }
-  });
-},
-appearOptions);
+// document.getElementById("btn").addEventListener("click", async function () {
+//   getMovieData();
+// });
 
-faders.forEach((fader) => {
-  appearOnScroll.observe(fader);
-});
+function getMovieID() {
+  let movieID = parseInt(document.getElementById("nature_menu").value);
+  return movieID;
+}
 
+async function getMovieData() {
+  let movieData = await getTMDBData(
+    `https://api.themoviedb.org/3/tv/${getMovieID()}?api_key=${API_KEY}&append_to_response=videos`
+  );
+  document.getElementById("poster").src =
+    "https://image.tmdb.org/t/p/w500" + movieData.poster_path;
+  document.getElementById("title").innerHTML = movieData.name;
+  document.getElementById(
+    "first_aired"
+  ).innerHTML = `First Aired: ${movieData.first_air_date}`;
+  document.getElementById(
+    "number_of_seasons"
+  ).innerHTML = `Number of Seasons: ${movieData.number_of_seasons}`;
+  document.getElementById(
+    "number_of_episodes"
+  ).innerHTML = `Number of Episodes: ${movieData.number_of_episodes}`;
+  document.getElementById("overview").innerHTML =
+    "Overview: " + movieData.overview;
+
+  const trailer = document.getElementById("trailer");
+  document.getElementById("trailer").width = "700";
+  document.getElementById("trailer").height = "400";
+  trailer.style.display = "block";
+  document.getElementById("trailer").src =
+    "https://www.youtube.com/embed/" +
+    movieData.videos.results
+      .filter((trailer) => trailer.type === "Trailer")
+      .at(0).key;
+
+  document.getElementById(
+    "latest_episode"
+  ).innerHTML = `Latest Episode: ${movieData.last_episode_to_air.name}`;
+
+  document.getElementById(
+    "latest_air_date"
+  ).innerHTML = `Air Date: ${movieData.last_episode_to_air.air_date}`;
+
+  document.getElementById(
+    "latest_overview"
+  ).innerHTML = `${movieData.last_episode_to_air.overview}`;
+}
 </script>
 
 <template>
-  <div class="hero">
-    <img class="hero-image" src="../assets/earth-meets-space.jpg" />
-    <div class="hero-content">
-      <h1>Welcome to Jounce.</h1>
-      <h2 class="intro">
-        Find information about your favourite science documentaries in a SNAP.
-      </h2>
-    </div>
-  </div>
-  <div>
-    <h1>Test</h1>
+  <div id="nature_menu_padding">
+    <select name="listOfMovies" id="nature_menu">
+      <option value="208230">Wild Isles</option>
+      <option value="116155">Frozen Planet II</option>
+      <option value="8724">Frozen Planet</option>
+      <option value="95171">Prehistoric Planet</option>
+      <option value="96323">The Green Planet</option>
+      <option value="135546">The Mating Game</option>
+      <option value="119815">Attenborough's Life in Colour</option>
+      <option value="115194">A Perfect Planet</option>
+      <option value="83880">Our Planet</option>
+      <option value="82953">Dynasties</option>
+      <option value="74313">Blue Planet II</option>
+      <option value="13579">The Blue Planet</option>
+      <option value="68595">Planet Earth II</option>
+      <option value="1044">Planet Earth</option>
+      <option value="64313">The Hunt</option>
+      <option value="61894">Life Story</option>
+      <option value="58703">Attenborough's Natural Curiosities</option>
+      <option value="46664">Africa</option>
+      <option value="16946">Life</option>
+      <option value="21145">Natural World</option>
+    </select>
+    <button id="btn" class="button" @click="getMovieData()">Get</button>
   </div>
 
-  <!-- <div class="fade-in instructions0">
-    <h3 class="instructions1">Getting started using Jounce.</h3>
-    <p class="instructions1">
-      It's quite simple, really. All you need to do is follow the three steps
-      listed below:
-    </p>
-    <div class="instructions2">
-      <p class="instructions1">
-        1. Visit the library to view our selection of the latest space
-        documentaries.
-      </p>
-      <p class="instructions1">
-        2. Pick one you would like more information on, and note the number
-        assigned to it.
-      </p>
-      <p class="instructions1">
-        3. Hover over "Get Movies" and pick the corresponding number.
-      </p>
+  <div id="documentary_info">
+    <div id="nature_main_info">
+      <img id="poster" class="nature_info" src="" />
+      <div id="nature_overview">
+        <h1 class="nature_info" id="title"></h1>
+        <h3 class="nature_info" id="first_aired"></h3>
+        <h4 class="nature_info" id="number_of_seasons"></h4>
+        <h4 class="nature_info" id="number_of_episodes"></h4>
+        <p class="nature_info" id="overview"></p>
+      </div>
     </div>
-    <h4 class="instructions1">
-      Voila! Now you can do it all over again with another movie if you fancy
-      so.
-    </h4>
-  </div> -->
-  <!-- <select @change="test">
-    <option>A</option>
-    <option>B</option>
-    <option>C</option>
-  </select> -->
+    <div class="nature_trailer">
+      <iframe id="trailer" hidden></iframe>
+    </div>
+    <h2 class="nature_info" id="latest_episode"></h2>
+    <h3 class="nature_info" id="latest_air_date"></h3>
+    <p class="nature_info" id="latest_overview"></p>
+  </div>
 </template>
 
 <style scoped>
-
 .hero {
   display: grid;
   height: 100%;
