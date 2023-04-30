@@ -14,4 +14,8 @@ import Home from './components/Home.vue';
   box-sizing: border-box;
   background-color: black;
 }
+
+.custom-font {
+  font-family: rabikiso;
+}
 </style>

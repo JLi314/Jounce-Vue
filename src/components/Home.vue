@@ -106,65 +106,61 @@ async function getMovieData() {
 </template>
 
 <style scoped>
-.hero {
-  display: grid;
-  height: 100%;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-.hero-content {
-  z-index: 1;
-  grid-area: 1/-1;
-  display: flex;
-  flex-direction: column;
-  margin: auto;
-  text-align: center;
-  color: whitesmoke;
-  padding-bottom: 250px;
-  font-family: "Montserrat", sans-serif;
+img {
+  width: 200px;
 }
 
-.hero-image {
-  grid-area: 1/-1;
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
-  min-height: 0;
-}
-
-.intro {
-  position: relative;
-  display: grid;
-  padding-top: 20px;
-  font-weight: 400;
-}
-
-.instructions0 {
-  padding-top: 150px;
-  padding-bottom: 125px;
-}
-
-.instructions1 {
-  color: rgb(230, 230, 230);
-  font-family: "Montserrat", sans-serif;
-  padding: 20px;
-  width: 80%;
-  margin: auto;
-  text-align: center;
-}
-
-.instructions2 {
+#documentary_info {
+  padding: 25px;
   color: white;
   font-family: "Montserrat", sans-serif;
-  padding: 20px;
-  width: 60%;
-  margin: auto;
 }
 
-.fade-in {
-  opacity: 0;
-  transition: opacity 500ms ease-in;
+.nature_info {
+  padding-top: 10px;
 }
-.fade-in.appear {
-  opacity: 1;
+
+#nature_main_info {
+  display: flex;
+}
+
+#nature_overview {
+  margin-left: 15px;
+}
+
+#nature_menu {
+  font-size: 15px;
+  color: black;
+  padding: 2px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+}
+
+#nature_menu_padding {
+  padding-left: 20px;
+  padding-top: 10px;
+}
+
+.button {
+  background-color: black; 
+  border: 1px solid white;
+  border-radius: 2px;
+  color: white;
+  padding: 2px 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.nature_trailer {
+  padding-top: 15px;
+  padding-bottom: 50px;
 }
 </style>
