@@ -124,14 +124,17 @@ img {
 
 .nature_info {
   padding-top: 10px;
+  font-family: "Montserrat", sans-serif;
 }
 
 #nature_main_info {
   display: flex;
+  font-family: "Montserrat", sans-serif;
 }
 
 #nature_overview {
   margin-left: 15px;
+  font-family: "Montserrat", sans-serif;
 }
 
 #nature_menu {
@@ -156,6 +159,7 @@ img {
   text-align: center;
   text-decoration: none;
   display: inline-block;
+  font-family: "Montserrat", sans-serif;
   font-size: 16px;
 }
 
