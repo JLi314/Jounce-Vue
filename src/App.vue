@@ -8,14 +8,5 @@ import Home from './components/Home.vue';
 </template>
 
 <style scoped>
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  background-color: black;
-}
 
-.custom-font {
-  font-family: rabikiso;
-}
 </style>

@@ -1,6 +1,6 @@
 <script setup>
 import axios from 'axios';
-let API_KEY = "612e2115115fc594a638c0a80e0a2724";
+import API_KEY from "./key.js";
 
 const getTMDBData = async (url) => {
   return (await axios.get(url)).data;
@@ -143,6 +143,7 @@ img {
   padding: 2px;
   font-family: "Montserrat", sans-serif;
   font-weight: 500;
+  background: pink;
 }
 
 #nature_menu_padding {
@@ -161,6 +162,7 @@ img {
   display: inline-block;
   font-family: "Montserrat", sans-serif;
   font-size: 16px;
+  margin-left: 0.25rem;
 }
 
 .nature_trailer {
