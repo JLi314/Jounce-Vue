@@ -140,10 +140,11 @@ img {
 #nature_menu {
   font-size: 15px;
   color: black;
+  border-radius: 2px;
   padding: 2px;
   font-family: "Montserrat", sans-serif;
   font-weight: 500;
-  background: pink;
+  background: white;
 }
 
 #nature_menu_padding {
