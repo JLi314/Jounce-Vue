@@ -6,10 +6,6 @@ const getTMDBData = async (url) => {
   return (await axios.get(url)).data;
 };
 
-// document.getElementById("btn").addEventListener("click", async function () {
-//   getMovieData();
-// });
-
 function getMovieID() {
   let movieID = parseInt(document.getElementById("nature_menu").value);
   return movieID;
@@ -61,26 +57,26 @@ async function getMovieData() {
 <template>
   <div id="nature_menu_padding">
     <select name="listOfMovies" id="nature_menu">
-      <option value="208230">Wild Isles</option>
-      <option value="116155">Frozen Planet II</option>
-      <option value="8724">Frozen Planet</option>
-      <option value="95171">Prehistoric Planet</option>
-      <option value="96323">The Green Planet</option>
-      <option value="135546">The Mating Game</option>
-      <option value="119815">Attenborough's Life in Colour</option>
-      <option value="115194">A Perfect Planet</option>
-      <option value="83880">Our Planet</option>
-      <option value="82953">Dynasties</option>
-      <option value="74313">Blue Planet II</option>
-      <option value="13579">The Blue Planet</option>
-      <option value="68595">Planet Earth II</option>
-      <option value="1044">Planet Earth</option>
-      <option value="64313">The Hunt</option>
-      <option value="61894">Life Story</option>
-      <option value="58703">Attenborough's Natural Curiosities</option>
-      <option value="46664">Africa</option>
-      <option value="16946">Life</option>
-      <option value="21145">Natural World</option>
+      <option class="menu-item" value="208230">Wild Isles</option>
+      <option class="menu-item" value="116155">Frozen Planet II</option>
+      <option class="menu-item" value="8724">Frozen Planet</option>
+      <option class="menu-item" value="95171">Prehistoric Planet</option>
+      <option class="menu-item" value="96323">The Green Planet</option>
+      <option class="menu-item" value="135546">The Mating Game</option>
+      <option class="menu-item" value="119815">Attenborough's Life in Colour</option>
+      <option class="menu-item" value="115194">A Perfect Planet</option>
+      <option class="menu-item" value="83880">Our Planet</option>
+      <option class="menu-item" value="82953">Dynasties</option>
+      <option class="menu-item" value="74313">Blue Planet II</option>
+      <option class="menu-item" value="13579">The Blue Planet</option>
+      <option class="menu-item" value="68595">Planet Earth II</option>
+      <option class="menu-item" value="1044">Planet Earth</option>
+      <option class="menu-item" value="64313">The Hunt</option>
+      <option class="menu-item" value="61894">Life Story</option>
+      <option class="menu-item" value="58703">Attenborough's Natural Curiosities</option>
+      <option class="menu-item" value="46664">Africa</option>
+      <option class="menu-item" value="16946">Life</option>
+      <option class="menu-item" value="21145">Natural World</option>
     </select>
     <button id="btn" class="button" @click="getMovieData()">Get</button>
   </div>
@@ -132,6 +128,11 @@ img {
   font-family: "Montserrat", sans-serif;
 }
 
+.menu-item {
+  background-color: white;
+  color: black;
+}
+
 #nature_overview {
   margin-left: 15px;
   font-family: "Montserrat", sans-serif;
@@ -139,7 +140,7 @@ img {
 
 #nature_menu {
   font-size: 15px;
-  color: black;
+  color: rgb(0, 0, 0);
   border-radius: 2px;
   padding: 2px;
   font-family: "Montserrat", sans-serif;
