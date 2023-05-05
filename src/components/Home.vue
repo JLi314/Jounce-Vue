@@ -23,35 +23,34 @@ export default {
 
 <template>
   <div id="nature_menu_padding">
-  <select v-model="moviePicker" id="nature_menu">
-    <option class="menu-item" value="208230">Wild Isles</option>
-    <option class="menu-item" value="116155">Frozen Planet II</option>
-    <option class="menu-item" value="8724">Frozen Planet</option>
-    <option class="menu-item" value="95171">Prehistoric Planet</option>
-    <option class="menu-item" value="96323">The Green Planet</option>
-    <option class="menu-item" value="135546">The Mating Game</option>
-    <option class="menu-item" value="119815">
-      Attenborough's Life in Colour
-    </option>
-    <option class="menu-item" value="115194">A Perfect Planet</option>
-    <option class="menu-item" value="83880">Our Planet</option>
-    <option class="menu-item" value="82953">Dynasties</option>
-    <option class="menu-item" value="74313">Blue Planet II</option>
-    <option class="menu-item" value="13579">The Blue Planet</option>
-    <option class="menu-item" value="68595">Planet Earth II</option>
-    <option class="menu-item" value="1044">Planet Earth</option>
-    <option class="menu-item" value="64313">The Hunt</option>
-    <option class="menu-item" value="61894">Life Story</option>
-    <option class="menu-item" value="58703">
-      Attenborough's Natural Curiosities
-    </option>
-    <option class="menu-item" value="46664">Africa</option>
-    <option class="menu-item" value="16946">Life</option>
-    <option class="menu-item" value="21145">Natural World</option>
-  </select>
-  <button class="button" @click="getInfo">Get</button>
+    <select v-model="moviePicker" id="nature_menu">
+      <option class="menu-item" value="208230">Wild Isles</option>
+      <option class="menu-item" value="116155">Frozen Planet II</option>
+      <option class="menu-item" value="8724">Frozen Planet</option>
+      <option class="menu-item" value="95171">Prehistoric Planet</option>
+      <option class="menu-item" value="96323">The Green Planet</option>
+      <option class="menu-item" value="135546">The Mating Game</option>
+      <option class="menu-item" value="119815">
+        Attenborough's Life in Colour
+      </option>
+      <option class="menu-item" value="115194">A Perfect Planet</option>
+      <option class="menu-item" value="83880">Our Planet</option>
+      <option class="menu-item" value="82953">Dynasties</option>
+      <option class="menu-item" value="74313">Blue Planet II</option>
+      <option class="menu-item" value="13579">The Blue Planet</option>
+      <option class="menu-item" value="68595">Planet Earth II</option>
+      <option class="menu-item" value="1044">Planet Earth</option>
+      <option class="menu-item" value="64313">The Hunt</option>
+      <option class="menu-item" value="61894">Life Story</option>
+      <option class="menu-item" value="58703">
+        Attenborough's Natural Curiosities
+      </option>
+      <option class="menu-item" value="46664">Africa</option>
+      <option class="menu-item" value="16946">Life</option>
+      <option class="menu-item" value="21145">Natural World</option>
+    </select>
+    <button class="button" @click="getInfo">Get</button>
   </div>
-  
 
   <div v-if="movieInfo" id="documentary_info">
     <div id="nature_main_info">
