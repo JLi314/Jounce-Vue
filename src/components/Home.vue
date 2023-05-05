@@ -1,61 +1,94 @@
-<script setup>
-import axios from 'axios';
+<script>
+import { ref } from "vue";
+import axios from "axios";
 import API_KEY from "./key.js";
 
-const getTMDBData = async (url) => {
-  return (await axios.get(url)).data;
+export default {
+  name: "MovieInfo",
+  setup() {
+    const moviePicker = ref("208230");
+    const movieInfo = ref(null);
+
+    const getInfo = async () => {
+      const response = await axios.get(
+        `https://api.themoviedb.org/3/tv/${moviePicker.value}?api_key=${API_KEY}&append_to_response=videos`
+      );
+      movieInfo.value = response.data;
+    };
+
+    return { moviePicker, movieInfo, getInfo };
+  },
 };
-
-function getMovieID() {
-  let movieID = parseInt(document.getElementById("nature_menu").value);
-  return movieID;
-}
-
-async function getMovieData() {
-  let movieData = await getTMDBData(
-    `https://api.themoviedb.org/3/tv/${getMovieID()}?api_key=${API_KEY}&append_to_response=videos`
-  );
-  document.getElementById("poster").src =
-    "https://image.tmdb.org/t/p/w500" + movieData.poster_path;
-  document.getElementById("title").innerHTML = movieData.name;
-  document.getElementById(
-    "first_aired"
-  ).innerHTML = `First Aired: ${movieData.first_air_date}`;
-  document.getElementById(
-    "number_of_seasons"
-  ).innerHTML = `Number of Seasons: ${movieData.number_of_seasons}`;
-  document.getElementById(
-    "number_of_episodes"
-  ).innerHTML = `Number of Episodes: ${movieData.number_of_episodes}`;
-  document.getElementById("overview").innerHTML =
-    "Overview: " + movieData.overview;
-
-  const trailer = document.getElementById("trailer");
-  document.getElementById("trailer").width = "700";
-  document.getElementById("trailer").height = "400";
-  trailer.style.display = "block";
-  document.getElementById("trailer").src =
-    "https://www.youtube.com/embed/" +
-    movieData.videos.results
-      .filter((trailer) => trailer.type === "Trailer")
-      .at(0).key;
-
-  document.getElementById(
-    "latest_episode"
-  ).innerHTML = `Latest Episode: ${movieData.last_episode_to_air.name}`;
-
-  document.getElementById(
-    "latest_air_date"
-  ).innerHTML = `Air Date: ${movieData.last_episode_to_air.air_date}`;
-
-  document.getElementById(
-    "latest_overview"
-  ).innerHTML = `${movieData.last_episode_to_air.overview}`;
-}
 </script>
 
 <template>
   <div id="nature_menu_padding">
+  <select v-model="moviePicker" id="nature_menu">
+    <option class="menu-item" value="208230">Wild Isles</option>
+    <option class="menu-item" value="116155">Frozen Planet II</option>
+    <option class="menu-item" value="8724">Frozen Planet</option>
+    <option class="menu-item" value="95171">Prehistoric Planet</option>
+    <option class="menu-item" value="96323">The Green Planet</option>
+    <option class="menu-item" value="135546">The Mating Game</option>
+    <option class="menu-item" value="119815">
+      Attenborough's Life in Colour
+    </option>
+    <option class="menu-item" value="115194">A Perfect Planet</option>
+    <option class="menu-item" value="83880">Our Planet</option>
+    <option class="menu-item" value="82953">Dynasties</option>
+    <option class="menu-item" value="74313">Blue Planet II</option>
+    <option class="menu-item" value="13579">The Blue Planet</option>
+    <option class="menu-item" value="68595">Planet Earth II</option>
+    <option class="menu-item" value="1044">Planet Earth</option>
+    <option class="menu-item" value="64313">The Hunt</option>
+    <option class="menu-item" value="61894">Life Story</option>
+    <option class="menu-item" value="58703">
+      Attenborough's Natural Curiosities
+    </option>
+    <option class="menu-item" value="46664">Africa</option>
+    <option class="menu-item" value="16946">Life</option>
+    <option class="menu-item" value="21145">Natural World</option>
+  </select>
+  <button class="button" @click="getInfo">Get</button>
+  </div>
+  
+
+  <div v-if="movieInfo" id="documentary_info">
+    <div id="nature_main_info">
+      <img
+        :src="`https://image.tmdb.org/t/p/w500${movieInfo.poster_path}`"
+        alt=""
+      />
+      <div id="nature_overview">
+        <h1 class="nature_info">{{ movieInfo.name }}</h1>
+        <h3 class="nature_info">First Aired: {{ movieInfo.first_air_date }}</h3>
+        <h4 class="nature_info">
+          Number of Seasons: {{ movieInfo.number_of_seasons }}
+        </h4>
+        <h4 class="nature_info">
+          Number of Episodes: {{ movieInfo.number_of_episodes }}
+        </h4>
+        <p class="nature_info">Overview: {{ movieInfo.overview }}</p>
+      </div>
+    </div>
+    <iframe
+      class="nature_trailer"
+      :src="`https://www.youtube.com/embed/${
+        movieInfo.videos.results
+          .filter((trailer) => trailer.type === 'Trailer')
+          .at(0).key
+      }`"
+      frameborder="1"
+    ></iframe>
+    <h2 class="nature_info">
+      Latest Episode: {{ movieInfo.last_episode_to_air.name }}
+    </h2>
+    <h3 class="nature_info">
+      Air Date: {{ movieInfo.last_episode_to_air.air_date }}
+    </h3>
+    <p class="nature_info">{{ movieInfo.last_episode_to_air.overview }}</p>
+  </div>
+  <!-- <div id="nature_menu_padding">
     <select name="listOfMovies" id="nature_menu">
       <option class="menu-item" value="208230">Wild Isles</option>
       <option class="menu-item" value="116155">Frozen Planet II</option>
@@ -98,7 +131,7 @@ async function getMovieData() {
     <h2 class="nature_info" id="latest_episode"></h2>
     <h3 class="nature_info" id="latest_air_date"></h3>
     <p class="nature_info" id="latest_overview"></p>
-  </div>
+  </div> -->
 </template>
 
 <style scoped>
@@ -154,7 +187,7 @@ img {
 }
 
 .button {
-  background-color: black; 
+  background-color: black;
   border: 1px solid white;
   border-radius: 2px;
   color: white;
@@ -168,7 +201,10 @@ img {
 }
 
 .nature_trailer {
-  padding-top: 15px;
-  padding-bottom: 50px;
+  width: 700px;
+  height: 400px;
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 50px;
 }
 </style>
