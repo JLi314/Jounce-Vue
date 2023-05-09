@@ -87,50 +87,6 @@ export default {
     </h3>
     <p class="nature_info">{{ movieInfo.last_episode_to_air.overview }}</p>
   </div>
-  <!-- <div id="nature_menu_padding">
-    <select name="listOfMovies" id="nature_menu">
-      <option class="menu-item" value="208230">Wild Isles</option>
-      <option class="menu-item" value="116155">Frozen Planet II</option>
-      <option class="menu-item" value="8724">Frozen Planet</option>
-      <option class="menu-item" value="95171">Prehistoric Planet</option>
-      <option class="menu-item" value="96323">The Green Planet</option>
-      <option class="menu-item" value="135546">The Mating Game</option>
-      <option class="menu-item" value="119815">Attenborough's Life in Colour</option>
-      <option class="menu-item" value="115194">A Perfect Planet</option>
-      <option class="menu-item" value="83880">Our Planet</option>
-      <option class="menu-item" value="82953">Dynasties</option>
-      <option class="menu-item" value="74313">Blue Planet II</option>
-      <option class="menu-item" value="13579">The Blue Planet</option>
-      <option class="menu-item" value="68595">Planet Earth II</option>
-      <option class="menu-item" value="1044">Planet Earth</option>
-      <option class="menu-item" value="64313">The Hunt</option>
-      <option class="menu-item" value="61894">Life Story</option>
-      <option class="menu-item" value="58703">Attenborough's Natural Curiosities</option>
-      <option class="menu-item" value="46664">Africa</option>
-      <option class="menu-item" value="16946">Life</option>
-      <option class="menu-item" value="21145">Natural World</option>
-    </select>
-    <button id="btn" class="button" @click="getMovieData()">Get</button>
-  </div>
-
-  <div id="documentary_info">
-    <div id="nature_main_info">
-      <img id="poster" class="nature_info" src="" />
-      <div id="nature_overview">
-        <h1 class="nature_info" id="title"></h1>
-        <h3 class="nature_info" id="first_aired"></h3>
-        <h4 class="nature_info" id="number_of_seasons"></h4>
-        <h4 class="nature_info" id="number_of_episodes"></h4>
-        <p class="nature_info" id="overview"></p>
-      </div>
-    </div>
-    <div class="nature_trailer">
-      <iframe id="trailer" hidden></iframe>
-    </div>
-    <h2 class="nature_info" id="latest_episode"></h2>
-    <h3 class="nature_info" id="latest_air_date"></h3>
-    <p class="nature_info" id="latest_overview"></p>
-  </div> -->
 </template>
 
 <style scoped>
