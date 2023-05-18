@@ -1,6 +1,5 @@
 <script setup>
 import Home from './components/Home.vue';
-
 </script>
 
 <template>
@@ -8,5 +7,4 @@ import Home from './components/Home.vue';
 </template>
 
 <style scoped>
-
 </style>
