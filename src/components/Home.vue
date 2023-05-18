@@ -1,7 +1,7 @@
 <script>
 import { ref } from "vue";
 import axios from "axios";
-import API_KEY from "./key.js";
+import API_KEY from "../key.js";
 
 export default {
   name: "MovieInfo",
