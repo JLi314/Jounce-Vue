@@ -7,3 +7,5 @@ Whether you want posters, descriptions, or trailers we have it all! Everything c
 Now you might be wondering, why would it be called Jounce then?
 
 Well, it's a little physics pun. The fourth dertivative of position is often called a snap, but it is also referred to as a jounce occasionally. So the name Jounce reflects the user-friendly and fast site experience one would expect from a site described as somewhere you can get information from quick as a snap, but with a twist!
+
+UPCOMING UPDATES: Sign up, Login, and Purchase features soon to be available. Made possible by Vue Router and Pinia.
