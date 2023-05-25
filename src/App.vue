@@ -1,14 +1,9 @@
-<script setup>
-// import Home from './views/Home.vue';
-// import Login from './views/Login.vue'
-</script>
+<script setup></script>
 
 <template>
-  <!-- <Login /> -->
   <Suspense>
     <RouterView />
   </Suspense>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>
