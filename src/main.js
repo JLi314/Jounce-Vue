@@ -1,7 +1,11 @@
-import { createApp } from 'vue'
-import App from './App.vue'
+import { createApp } from 'vue';
+import { createPinia } from 'pinia';
+import App from './App.vue';
+import router from "./router";
 
-createApp(App).mount('#app')
+const store = createPinia();
+
+createApp(App).use(router).use(store).mount('#app');
 
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
