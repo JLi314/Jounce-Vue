@@ -1,10 +1,13 @@
 <script setup>
-import Home from './components/Home.vue';
-import Login from './components/Login.vue'
+// import Home from './views/Home.vue';
+// import Login from './views/Login.vue'
 </script>
 
 <template>
-  <Login />
+  <!-- <Login /> -->
+  <Suspense>
+    <RouterView />
+  </Suspense>
 </template>
 
 <style scoped>
