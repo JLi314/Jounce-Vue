@@ -1,10 +1,15 @@
-<script setup></script>
+<script setup>
+import {useRouter} from "vue-router";
+const router = useRouter();
+</script>
 
 <template>
   <div class="topnav">
-    <a class="active" href="">Home</a>
+    <!-- <a class="active" href="">Home</a> -->
+    <button class="nav-btn" @click="router.push('/')">Home</button>
     <a href="">Store</a>
-    <a href="">Login</a>
+    <!-- <a href="">Login</a> -->
+    <button class="nav-btn" @click="router.push('/login')">Login</button>
   </div>
 </template>
 
@@ -45,5 +50,9 @@
     margin: 0;
     padding: 14px;
   }
+}
+
+.nav-btn {
+  background-color: white;
 }
 </style>
