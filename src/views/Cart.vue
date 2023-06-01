@@ -6,10 +6,11 @@ const store = useStore();
 </script>
 
 <template>
-  <Navbar />>
+  <Navbar />
+  <h1 class="heading">You have purchased:</h1>
   <div>
     <div v-for="movie in store.cart">
-      <h1 class="title">{{ movie.title }}</h1>
+      <p class="title">{{ movie.title }}</p>
       <img :src="`https://image.tmdb.org/t/p/w500/${movie.poster}`" />
     </div>
   </div>
@@ -18,5 +19,9 @@ const store = useStore();
 <style scoped>
 .title {
   color: white;
+}
+.heading {
+  color: white;
+  font-family: "Montserrat", sans-serif;
 }
 </style>

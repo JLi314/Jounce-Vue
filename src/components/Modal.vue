@@ -21,17 +21,23 @@ const movie = (
   <Teleport to="body">
     <div class="modal-outer-container" @click.self="$emit('toggleModal')">
       <div class="modal-inner-container">
-        <button @click="$emit('toggleModal')">X</button>
-        <div v-if="movie">
-          <img :src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`" />
-          <h1 class="modal-info">{{ movie.title }}</h1>
-          <h2 class="modal-info">{{ movie.release_date }}</h2>
-          <h3
-            class="modal-info"
-            @click="store.addToCart(movie.poster_path, movie.title)"
-          >
-            Purchase
-          </h3>
+        <button class="close-btn" @click="$emit('toggleModal')">X</button>
+        <div class="info" v-if="movie">
+          <img
+            class="modal-image"
+            :src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`"
+          />
+          <div class="modal-text">
+            <h1 class="modal-info">{{ movie.title }}</h1>
+            <h2 class="modal-info">{{ movie.release_date }}</h2>
+            <p class="modal-info">{{ movie.overview }}</p>
+            <p
+              class="purchase-btn"
+              @click="store.addToCart(movie.poster_path, movie.title)"
+            >
+              Purchase
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -52,8 +58,8 @@ const movie = (
 }
 
 .modal-outer-container .modal-inner-container {
-  background-color: #ffffff;
-  width: clamp(280px, 100%, 900px);
+  background-color: #000000;
+  width: clamp(250px, 100%, 900px);
   height: 50vh;
   position: relative;
 }
@@ -63,13 +69,13 @@ const movie = (
   right: 0px;
   padding: 1rem;
   border: none;
-  background: #ffffff;
+  background: #000000;
   font-weight: bold;
 }
 
 .modal-outer-container .modal-inner-container .icon {
   font-size: 1.25rem;
-  color: white;
+  color: rgb(255, 255, 255);
 }
 
 img {
@@ -78,5 +84,42 @@ img {
 
 .modal-info {
   color: white;
+  font-family: "Montserrat", sans-serif;
+  margin-right: 30px;
+  padding: 5px;
+}
+
+.close-btn {
+  color: white;
+  font-size: 25px;
+}
+
+.info {
+  display: flex;
+}
+
+.modal-image {
+  padding: 15px;
+  padding-top: 25px;
+  padding-bottom: 0px;
+}
+
+.modal-text {
+  padding-top: 15px;
+}
+
+.purchase-btn {
+  text-align: center;
+  align-items: center;
+  margin-top: 10px;
+  margin-left: 5px;
+  margin-right: 50px;
+  padding: 2px;
+  border: solid;
+  border-width: 2px;
+  border-radius: 3px;
+  border-color: white;
+  color: white;
+  font-family: "Montserrat", sans-serif;
 }
 </style>
