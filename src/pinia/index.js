@@ -1,14 +1,8 @@
 import { defineStore } from "pinia";
 
-const useStore = defineStore("store", {
+export const useStore = defineStore("store", {
   state: () => ({
-    user: "Big Boy Billy",
+    movies: [],
   }),
-  actions: {
-    greeting() {
-      console.log(`Hello ${this.user}!`);
-    },
-  },
+  actions: {},
 });
-
-export default useStore;
