@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from "vue";
 import { useRouter } from "vue-router";
+import { useStore } from "../pinia";
 import Navbar from "../components/Navbar.vue";
 
 const router = useRouter();
@@ -10,6 +11,7 @@ const password = ref("");
 const login = () => {
   if (username.value === "tmdb" && password.value === "movies") {
     router.push("/store");
+    useStore().permission();
   } else {
     alert("Incorrect Username or Password");
   }

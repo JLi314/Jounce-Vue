@@ -19,32 +19,45 @@ const movie = (
 
 <template>
   <Teleport to="body">
-    <div class="modal-outer-container" @click.self="$emit('toggleModal')">
-      <div class="modal-inner-container">
-        <button class="close-btn" @click="$emit('toggleModal')">X</button>
-        <div class="info" v-if="movie">
-          <img
-            class="modal-image"
-            :src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`"
-          />
-          <div class="modal-text">
-            <h1 class="modal-info">{{ movie.title }}</h1>
-            <h2 class="modal-info">{{ movie.release_date }}</h2>
-            <p class="modal-info">{{ movie.overview }}</p>
-            <p
-              class="purchase-btn"
-              @click="store.addToCart(movie.poster_path, movie.title)"
-            >
-              Purchase
-            </p>
+    <Transition name="modal">
+      <div class="modal-outer-container" @click.self="$emit('toggleModal')">
+        <div class="modal-inner-container">
+          <button class="close-btn" @click="$emit('toggleModal')">X</button>
+          <div class="info" v-if="movie">
+            <img
+              class="modal-image"
+              :src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`"
+            />
+            <div class="modal-text">
+              <h1 class="modal-info">{{ movie.title }}</h1>
+              <h2 class="modal-info">{{ movie.release_date }}</h2>
+              <p class="modal-info">{{ movie.overview }}</p>
+              <p
+                class="purchase-btn"
+                @click="store.addToCart(movie.poster_path, movie.title)"
+              >
+                Purchase
+              </p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </Transition>
   </Teleport>
 </template>
 
 <style scoped>
+.modal-enter-active,
+.modal-leave-active {
+  transition: all 0.25s ease;
+}
+
+.modal-enter-from,
+.modal-leave-to {
+  opacity: 0;
+  transform: scale(1, 1);
+}
+
 .modal-outer-container {
   position: fixed;
   top: 0;

@@ -1,5 +1,6 @@
 <script setup>
 import { useRouter } from "vue-router";
+import { useStore } from "../pinia";
 const router = useRouter();
 </script>
 
@@ -7,8 +8,20 @@ const router = useRouter();
   <div class="topnav">
     <button class="nav-btn" @click="router.push('/')">Home</button>
     <button class="nav-btn" @click="router.push('/login')">Login</button>
-    <button class="nav-btn" @click="router.push('/store')">Store</button>
-    <button class="nav-btn" @click="router.push('/cart')">Cart</button>
+    <button
+      class="nav-btn"
+      v-if="useStore().loggedIn"
+      @click="router.push('/store')"
+    >
+      Store
+    </button>
+    <button
+      class="nav-btn"
+      v-if="useStore().loggedIn"
+      @click="router.push('/cart')"
+    >
+      Cart
+    </button>
   </div>
 </template>
 

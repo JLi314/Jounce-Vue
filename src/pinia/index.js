@@ -4,6 +4,7 @@ export const useStore = defineStore("store", {
   state: () => ({
     movies: [],
     cart: [],
+    loggedIn: false,
   }),
   actions: {
     addToCart(poster, title) {
@@ -11,6 +12,9 @@ export const useStore = defineStore("store", {
         poster,
         title,
       });
+    },
+    permission() {
+      this.loggedIn = true;
     },
   },
 });
