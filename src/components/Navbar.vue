@@ -1,15 +1,14 @@
 <script setup>
-import {useRouter} from "vue-router";
+import { useRouter } from "vue-router";
 const router = useRouter();
 </script>
 
 <template>
   <div class="topnav">
-    <!-- <a class="active" href="">Home</a> -->
     <button class="nav-btn" @click="router.push('/')">Home</button>
-    <a href="">Store</a>
-    <!-- <a href="">Login</a> -->
     <button class="nav-btn" @click="router.push('/login')">Login</button>
+    <button class="nav-btn" @click="router.push('/store')">Store</button>
+    <button class="nav-btn" @click="router.push('/cart')">Cart</button>
   </div>
 </template>
 

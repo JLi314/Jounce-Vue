@@ -3,7 +3,9 @@ import axios from "axios";
 import { ref } from "vue";
 import Navbar from "../components/Navbar.vue";
 import Modal from "../components/Modal.vue";
+import { useRouter } from "vue-router";
 
+const router = useRouter();
 const showModal = ref(false);
 const selectedRecordId = ref(0);
 const movies = ref(null);
@@ -41,6 +43,7 @@ movies.value = (
   grid-template-columns: repeat(4, 1fr);
   align-content: center;
 }
+
 img {
   width: 250px;
   height: 375px;

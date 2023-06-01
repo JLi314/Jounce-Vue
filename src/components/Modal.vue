@@ -26,6 +26,12 @@ const movie = (
           <img :src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`" />
           <h1 class="modal-info">{{ movie.title }}</h1>
           <h2 class="modal-info">{{ movie.release_date }}</h2>
+          <h3
+            class="modal-info"
+            @click="store.addToCart(movie.poster_path, movie.title)"
+          >
+            Purchase
+          </h3>
         </div>
       </div>
     </div>
