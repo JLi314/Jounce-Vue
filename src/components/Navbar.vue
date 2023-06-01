@@ -52,6 +52,19 @@ const router = useRouter();
 }
 
 .nav-btn {
-  background-color: white;
+  background-color: rgb(0, 0, 0);
+  float: left;
+  display: block;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  padding: 14px 16px;
+  border: 0px;
+  font-size: 17px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.nav-btn:hover {
+  background-color: whitesmoke;
+  color: black;
 }
 </style>
