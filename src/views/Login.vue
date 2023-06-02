@@ -12,9 +12,11 @@ const login = () => {
   if (username.value === "tmdb" && password.value === "movies") {
     router.push("/store");
     useStore().permission();
+    useStore().correctLogin();
   } else {
-    alert("Incorrect Username or Password");
+    useStore().incorrectLogin();
   }
+  console.log(useStore().loginStatus);
 };
 </script>
 
@@ -35,6 +37,16 @@ const login = () => {
     />
     <input class="login-info" type="submit" value="Login" />
   </form>
+  <p class="correct" v-if="useStore().loginStatus === 2">Login Accepted</p>
+  <div class="incorrect" v-else-if="useStore().loginStatus === 3">
+    <p>Incorrect Login</p>
+    <h1 class="greeting">HI MR QAYUM!!!</h1>
+    <img src="../assets/cutey-pie.webp" />
+    <audio autoplay>
+      <source autoplay="true" src="../assets/scream.mp3" type="audio/mp3" />
+    </audio>
+  </div>
+  <p v-else></p>
 </template>
 
 <style scoped>
@@ -48,7 +60,20 @@ const login = () => {
   background-color: white;
 }
 
-#alert {
+.correct {
+  color: greenyellow;
+}
+
+.incorrect {
   color: red;
+}
+
+img {
+  width: 700px;
+}
+
+.greeting {
+  color: red;
+  font-size: 50px;
 }
 </style>
