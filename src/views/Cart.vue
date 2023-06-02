@@ -23,7 +23,19 @@ const store = useStore();
   gap: 100px;
   width: 250px;
   padding-left: 68px;
+  animation-name: appear;
+  animation-duration: 0.5s;
 }
+
+@keyframes appear {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
 img {
   width: 200px;
 }

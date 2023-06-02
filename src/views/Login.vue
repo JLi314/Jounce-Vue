@@ -56,16 +56,18 @@ const login = () => {
   width: 30%;
 }
 .login-info {
-  /* color: white;  */
   background-color: white;
+  font-family: "Montserrat", sans-serif;
 }
 
 .correct {
   color: greenyellow;
+  font-family: "Montserrat", sans-serif;
 }
 
 .incorrect {
   color: red;
+  font-family: "Montserrat", sans-serif;
 }
 
 img {

@@ -19,35 +19,35 @@ const movie = (
 
 <template>
   <Teleport to="body">
-    <Transition name="modal">
-      <div class="modal-outer-container" @click.self="$emit('toggleModal')">
-        <div class="modal-inner-container">
-          <button class="close-btn" @click="$emit('toggleModal')">X</button>
-          <div class="info" v-if="movie">
-            <img
-              class="modal-image"
-              :src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`"
-            />
-            <div class="modal-text">
-              <h1 class="modal-info">{{ movie.title }}</h1>
-              <h2 class="modal-info">{{ movie.release_date }}</h2>
-              <p class="modal-info">{{ movie.overview }}</p>
-              <p
-                class="purchase-btn"
-                @click="store.addToCart(movie.poster_path, movie.title)"
-              >
-                Purchase
-              </p>
-            </div>
+    <!-- <Transition name="modal"> -->
+    <div class="modal-outer-container" @click.self="$emit('toggleModal')">
+      <div class="modal-inner-container">
+        <button class="close-btn" @click="$emit('toggleModal')">X</button>
+        <div class="info" v-if="movie">
+          <img
+            class="modal-image"
+            :src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`"
+          />
+          <div class="modal-text">
+            <h1 class="modal-info">{{ movie.title }}</h1>
+            <h2 class="modal-info">{{ movie.release_date }}</h2>
+            <p class="modal-info">{{ movie.overview }}</p>
+            <p
+              class="purchase-btn"
+              @click="store.addToCart(movie.poster_path, movie.title)"
+            >
+              Purchase
+            </p>
           </div>
         </div>
       </div>
-    </Transition>
+    </div>
+    <!-- </Transition> -->
   </Teleport>
 </template>
 
 <style scoped>
-.modal-enter-active,
+/* .modal-enter-active,
 .modal-leave-active {
   transition: all 0.25s ease;
 }
@@ -56,7 +56,7 @@ const movie = (
 .modal-leave-to {
   opacity: 0;
   transform: scale(1, 1);
-}
+} */
 
 .modal-outer-container {
   position: fixed;
@@ -75,6 +75,17 @@ const movie = (
   width: clamp(250px, 100%, 900px);
   height: 50vh;
   position: relative;
+  animation-name: appear;
+  animation-duration: 0.5s;
+}
+
+@keyframes appear {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
 }
 
 .modal-outer-container .modal-inner-container button {
@@ -134,5 +145,16 @@ img {
   border-color: white;
   color: white;
   font-family: "Montserrat", sans-serif;
+}
+
+.purchase-btn:hover {
+  background-color: white;
+  color: black;
+}
+
+.purchase-btn:active {
+  background-color: rgb(112, 112, 112);
+  border-color: rgb(0, 0, 0);
+  color: rgb(0, 0, 0);
 }
 </style>
