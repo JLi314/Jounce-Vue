@@ -1,7 +1,6 @@
 <script>
 import { ref } from "vue";
 import axios from "axios";
-import API_KEY from "../key.js";
 
 export default {
   name: "MovieInfo",
@@ -11,7 +10,7 @@ export default {
 
     const getInfo = async () => {
       const response = await axios.get(
-        `https://api.themoviedb.org/3/tv/${moviePicker.value}?api_key=${API_KEY}&append_to_response=videos`
+        `https://api.themoviedb.org/3/tv/${moviePicker.value}?api_key=${import.meta.env.VITE_API_KEY}&append_to_response=videos`
       );
       movieInfo.value = response.data;
     };
