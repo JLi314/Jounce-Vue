@@ -1,7 +1,11 @@
-import { createApp } from 'vue'
-import App from './App.vue'
+import { createApp } from "vue";
+import { createPinia } from "pinia";
+import App from "./App.vue";
+import router from "./router";
 
-createApp(App).mount('#app')
+const store = createPinia();
+
+createApp(App).use(router).use(store).mount("#app");
 
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
@@ -13,7 +17,7 @@ const firebaseConfig = {
   storageBucket: "jounce---vue.appspot.com",
   messagingSenderId: "1000071143413",
   appId: "1:1000071143413:web:88d09c9996d134ea6f0abc",
-  measurementId: "G-5DVSWTQVMQ"
+  measurementId: "G-5DVSWTQVMQ",
 };
 
 const app = initializeApp(firebaseConfig);

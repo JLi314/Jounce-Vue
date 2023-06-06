@@ -1,10 +1,9 @@
-<script setup>
-import Home from './components/Home.vue';
-</script>
+<script setup></script>
 
 <template>
-  <Home />
+  <Suspense>
+    <RouterView />
+  </Suspense>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>
