@@ -3,6 +3,13 @@ import Navbar from "../components/Navbar.vue";
 import { useStore } from "../pinia";
 
 const store = useStore();
+
+const remove = (movie) => {
+  const index = store.cart.indexOf(movie);
+  store.cart.splice(index, 1);
+};
+
+console.log(store.cart);
 </script>
 
 <template>
@@ -12,6 +19,7 @@ const store = useStore();
     <div v-for="movie in store.cart">
       <p class="title">{{ movie.title }}</p>
       <img :src="`https://image.tmdb.org/t/p/w500/${movie.poster}`" />
+      <button @click="remove(movie)">Remove</button>
     </div>
   </div>
 </template>
@@ -50,5 +58,14 @@ img {
   font-family: "Montserrat", sans-serif;
   padding-bottom: 20px;
   padding-left: 25px;
+}
+
+button {
+  color: white;
+  border: solid;
+  border-color: white;
+  padding: 2px;
+  border-radius: 2px;
+  width: 200px;
 }
 </style>

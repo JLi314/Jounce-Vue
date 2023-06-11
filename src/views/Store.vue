@@ -10,6 +10,8 @@ const showModal = ref(false);
 const genre = ref(99);
 const search = ref("");
 const totalPages = ref(0);
+const page = ref(1);
+const currentURL = ref("");
 const selectedRecordId = ref(0);
 const movies = ref(null);
 
@@ -32,7 +34,7 @@ const getTMDBData = async (url, options, page) => {
     })
   ).data;
   totalPages.value = movies.value.total_pages;
-  console.log(movies.value);
+  currentURL.value = url;
 };
 
 console.log;
@@ -46,7 +48,8 @@ console.log;
       @click="
         getTMDBData('https://api.themoviedb.org/3/search/movie', {
           query: search,
-        })
+        }),
+          (page = 1)
       "
     >
       Search
@@ -60,7 +63,8 @@ console.log;
       @click="
         getTMDBData('https://api.themoviedb.org/3/discover/movie', {
           with_genres: genre,
-        })
+        }),
+          (page = 1)
       "
     >
       Fetch
@@ -71,26 +75,26 @@ console.log;
       class="nav"
       @click="
         getTMDBData(
-          'https://api.themoviedb.org/3/search/movie',
+          currentURL,
           {
             query: search,
           },
-          page--
+          page === 1 ? 1 : page--
         )
       "
     >
       Previous
     </button>
-    <p>{{ `Page ${page} of ${totalPages}` }}</p>
+    <p class="text">{{ `Page ${page} of ${totalPages}` }}</p>
     <button
       class="nav"
       @click="
         getTMDBData(
-          'https://api.themoviedb.org/3/search/movie',
+          currentURL,
           {
             query: search,
           },
-          page++
+          page === totalPages ? totalPages : page++
         )
       "
     >
@@ -98,7 +102,7 @@ console.log;
     </button>
   </div>
   <div v-if="movies" class="tiles">
-    <div v-for="movie in movies.results">
+    <div v-for="movie in movies.results" :key="movie.id">
       <img
         :src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`"
         @click="toggleModal(movie.id)"
@@ -121,6 +125,10 @@ img {
 }
 
 .nav {
+  color: white;
+}
+
+.text {
   color: white;
 }
 </style>
