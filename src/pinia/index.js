@@ -6,8 +6,14 @@ export const useStore = defineStore("store", {
   state: () => ({
     user: null,
     cart: [],
+    loggedIn: false,
   }),
   actions: {
+    correctLogin() {
+      this.loggedIn = true;
+      console.log(this.loggedIn);
+    },
+
     async addToCart(poster, title) {
       this.cart.push({
         poster,
