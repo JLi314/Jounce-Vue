@@ -6,12 +6,7 @@ const store = useStore();
 
 const bigFunction = (movie) => {
   const index = store.cart.indexOf(movie);
-  remove(index);
   store.removeFromCart(index);
-};
-
-const remove = (index) => {
-  store.cart.splice(index, 1);
 };
 
 console.log(store.cart);
