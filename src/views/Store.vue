@@ -3,11 +3,8 @@ import axios from "axios";
 import { ref } from "vue";
 import Navbar from "../components/Navbar.vue";
 import Modal from "../components/Modal.vue";
-import { useRouter } from "vue-router";
-
-const router = useRouter();
 const showModal = ref(false);
-const genre = ref(99);
+const keyword = ref(12425);
 const search = ref("");
 const totalPages = ref(0);
 const page = ref(1);
@@ -42,35 +39,52 @@ console.log;
 
 <template>
   <Navbar />
-  <div>
-    <input type="search" placeholder="Barbie is behind you" v-model="search" />
-    <button
-      @click="
-        getTMDBData('https://api.themoviedb.org/3/search/movie', {
-          query: search,
-        }),
-          (page = 1)
-      "
-    >
-      Search
-    </button>
-    <select v-model="genre">
-      <option value="99">Documentary</option>
-      <option value="35">Comedy</option>
-      <option value="878">Science Fiction</option>
-    </select>
-    <button
-      @click="
-        getTMDBData('https://api.themoviedb.org/3/discover/movie', {
-          with_genres: genre,
-        }),
-          (page = 1)
-      "
-    >
-      Fetch
-    </button>
+  <div class="find">
+    <div>
+      <input
+        class="search_bar"
+        type="search"
+        placeholder="Qayum hates guns"
+        v-model="search"
+      />
+      <button
+        class="btn"
+        @click="
+          getTMDBData('https://api.themoviedb.org/3/search/movie', {
+            query: search,
+          }),
+            (page = 1)
+        "
+      >
+        Search
+      </button>
+    </div>
+    <div>
+      <select class="dropdown" v-model="keyword">
+        <option value="310">Artificial Intelligence</option>
+        <option value="3721">Health</option>
+        <option value="6009">Mathematics</option>
+        <option value="221355">Nature</option>
+        <option value="490">Philosophy</option>
+        <option value="6012">Physics</option>
+        <option value="12425">Racism, Racism, Racism</option>
+        <option value="9882">Space</option>
+      </select>
+      <button
+        class="btn"
+        @click="
+          getTMDBData('https://api.themoviedb.org/3/discover/movie', {
+            with_genres: 99,
+            with_keywords: keyword,
+          }),
+            (page = 1)
+        "
+      >
+        Athiesm
+      </button>
+    </div>
   </div>
-  <div>
+  <div class="page_nav">
     <button
       class="nav"
       @click="
@@ -78,12 +92,13 @@ console.log;
           currentURL,
           {
             query: search,
+            with_keywords: keyword,
           },
           page === 1 ? 1 : page--
         )
       "
     >
-      Previous
+      Back
     </button>
     <p class="text">{{ `Page ${page} of ${totalPages}` }}</p>
     <button
@@ -93,6 +108,7 @@ console.log;
           currentURL,
           {
             query: search,
+            with_keywords: keyword,
           },
           page === totalPages ? totalPages : page++
         )
@@ -124,11 +140,67 @@ img {
   height: 375px;
 }
 
-.nav {
-  color: white;
-}
-
 .text {
   color: white;
+  font-family: "Montserrat", sans-serif;
+  padding-top: 5px;
+}
+
+.btn,
+.dropdown,
+.search_bar {
+  color: white;
+  border-width: 2px;
+  border: solid;
+  border-width: 1px;
+  border-radius: 5px;
+  border-color: white;
+  padding: 4px;
+  margin: 2px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.search_bar {
+  margin-left: 0px;
+}
+
+.page_nav {
+  display: flex;
+  gap: 1rem;
+  padding-top: 10px;
+  justify-content: center;
+  padding-bottom: 5px;
+}
+
+.nav {
+  color: white;
+  border-width: 2px;
+  border: solid;
+  border-width: 1px;
+  border-radius: 5px;
+  border-color: white;
+  padding: 4px;
+  margin: 2px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.btn:hover,
+.nav:hover {
+  background-color: white;
+  color: black;
+  border-color: rgb(0, 0, 0);
+}
+
+.btn:active,
+.nav:hover {
+  background-color: rgb(61, 61, 61);
+  border-color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
+}
+
+.find {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
 }
 </style>
