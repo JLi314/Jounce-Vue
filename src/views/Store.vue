@@ -6,7 +6,7 @@ import Modal from "../components/Modal.vue";
 const showModal = ref(false);
 const keyword = ref(12425);
 const search = ref("");
-const totalPages = ref(0);
+const totalPages = ref(1);
 const page = ref(1);
 const currentURL = ref("");
 const selectedRecordId = ref(0);
@@ -33,8 +33,6 @@ const getTMDBData = async (url, options, page) => {
   totalPages.value = movies.value.total_pages;
   currentURL.value = url;
 };
-
-console.log;
 </script>
 
 <template>
@@ -56,7 +54,7 @@ console.log;
             (page = 1)
         "
       >
-        Search
+        USA sucks
       </button>
     </div>
     <div>
@@ -80,7 +78,7 @@ console.log;
             (page = 1)
         "
       >
-        Athiesm
+        Atheism
       </button>
     </div>
   </div>
@@ -126,6 +124,9 @@ console.log;
     </div>
   </div>
   <Modal v-if="showModal" :id="selectedRecordId" @toggleModal="toggleModal()" />
+  <audio autoplay>
+    <source autoplay="true" src="../assets/for-qayum.mp3" type="audio/mp3" />
+  </audio>
 </template>
 
 <style scoped>
