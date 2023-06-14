@@ -4,7 +4,7 @@ import { useStore } from "../pinia";
 
 const store = useStore();
 
-const bigFunction = (movie) => {
+const remove = (movie) => {
   const index = store.cart.indexOf(movie);
   store.removeFromCart(index);
 };
@@ -19,12 +19,15 @@ console.log(store.cart);
     <div v-for="movie in store.cart">
       <p class="title">{{ movie.title }}</p>
       <img :src="`https://image.tmdb.org/t/p/w500/${movie.poster}`" />
-      <button @click="bigFunction(movie)">Remove</button>
+      <button @click="remove(movie)">Remove</button>
     </div>
   </div>
 </template>
 
 <style scoped>
+.movie_info {
+  display: table;
+}
 .cart-tile {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
