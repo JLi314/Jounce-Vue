@@ -56,7 +56,6 @@ const loginViaEmail = async () => {
     router.push("/store");
   } catch (error) {
     alert("Incorrect Email or Password.");
-    console.log(error);
   }
 };
 
@@ -69,11 +68,15 @@ const registerViaGoogle = async () => {
   useStore().correctLogin();
   router.push("/store");
 };
+
+const earth = () => {};
 </script>
 
 <template>
   <Navbar />
   <div class="auth-container">
+    <div class="mercury"></div>
+    <div class="venus"></div>
     <div class="one_click">
       <button class="login_btn" @click="registerViaGoogle()">
         Login via Google
@@ -94,7 +97,7 @@ const registerViaGoogle = async () => {
             class="info_box"
             v-model="passwordOne"
             type="password"
-            placeholder="Enter Password"
+            placeholder="Password (6+ characters)"
           />
           <input
             class="info_box"
@@ -124,20 +127,74 @@ const registerViaGoogle = async () => {
         </form>
       </div>
     </div>
+    <div class="earth" @click="earth()"></div>
+    <div class="mars"></div>
   </div>
 </template>
 
 <style scoped>
+.mercury {
+  border-radius: 50%;
+  height: 80px;
+  width: 80px;
+  background-image: url(../assets/mercury.jpg);
+  background-size: cover;
+  box-shadow: -5px -5px 10px 1px #000 inset;
+  animation: spin 35s linear alternate infinite;
+  margin-left: 10px;
+}
+.venus {
+  border-radius: 50%;
+  height: 150px;
+  width: 150px;
+  background-image: url(../assets/venus.jpg);
+  background-size: cover;
+  box-shadow: -25px -25px 40px 2px #000 inset;
+  animation: spin 45s linear alternate infinite;
+}
+.earth {
+  border-radius: 50%;
+  height: 150px;
+  width: 150px;
+  background-image: url(../assets/earth-map.jpg);
+  background-size: cover;
+  box-shadow: -20px -20px 45px 2px #000 inset;
+  animation: spin 20s linear alternate infinite;
+}
+
+.mars {
+  border-radius: 50%;
+  height: 120px;
+  width: 120px;
+  background-image: url(../assets/mars.jpg);
+  background-size: cover;
+  box-shadow: -15px -15px 40px 2px #000 inset;
+  animation: spin 18s linear alternate infinite;
+  margin-right: 15px;
+}
+
+@keyframes spin {
+  100% {
+    background-position: 100%;
+  }
+}
+
 .text {
   color: white;
   font-family: "Montserrat", sans-serif;
   font-size: 20px;
   font-weight: bold;
   margin-bottom: 10px;
+  text-align: center;
 }
 
 .Eregister {
   margin-bottom: 10px;
+  margin-right: 15px;
+}
+
+.Elogin {
+  margin-right: 15px;
 }
 .info_box {
   border: solid;
@@ -150,7 +207,9 @@ const registerViaGoogle = async () => {
 .auth-container {
   display: flex;
   gap: 5rem;
+  height: 80vh;
   justify-content: center;
+  align-items: center;
 }
 
 .setup,
@@ -167,10 +226,6 @@ const registerViaGoogle = async () => {
   border-radius: 2px;
   border-width: 2px;
   padding: 6px;
-}
-
-.one_click {
-  margin-top: 120px;
 }
 
 .login_btn {
