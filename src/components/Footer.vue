@@ -4,28 +4,28 @@
   <div class="fade-in instructions0">
     <h3 class="instructions1">Getting started using Jounce.</h3>
     <p class="instructions1">
-      It's quite simple, really. All you need to do is follow the three steps
-      listed below:
+      It's quite simple, really. All you need to do is follow the few
+      intructions listed below:
     </p>
     <div class="instructions2">
       <p class="instructions1">
-        1. Choose whether you want to watch a space or nature documentary, and
-        then pick from our selection menu above.
+        1. Go to the login page and register or login. Make sure to store your
+        password in a secure spot.
       </p>
       <p class="instructions1">
-        2. If you are looking for space documentaries all information is listed
-        immediately about our current selection.
+        2. Once you are in the store, you can either use the search bar or find
+        documentaries sorted by genre.
       </p>
       <p class="instructions1">
-        Note: The selection constantly changes to reflect the current most
-        popular space documentaries. Additionally, documentary series, such as
-        Cosmos, are not included in the selection, only single standalone
-        documentary "movies".
+        Note: The selection constantly updates to reflect the most relevant
+        documentaries. Additionally, documentary series, such as Cosmos, are not
+        included in the selection; only single standalone documentary "movies"
+        are available.
       </p>
       <p class="instructions1">
-        3. If you are looking for nature documentaries you simply need to pick a
-        particular documentary from the selection menu. All documentaries are
-        narrated by David Attenborough, the author's favourite narrator!
+        3. Click on a poster you like and press the purchase button if you would
+        like to buy it. You can see all your purchases in the cart section by
+        clicking "Cart" in the navigation bar at the top of the page.
       </p>
     </div>
   </div>
