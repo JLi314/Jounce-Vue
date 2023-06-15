@@ -42,7 +42,7 @@ const getTMDBData = async (url, options, page) => {
       <input
         class="search_bar"
         type="search"
-        placeholder="Qayum hates guns"
+        placeholder="Qayum <3 guns"
         v-model="search"
       />
       <button
@@ -54,7 +54,7 @@ const getTMDBData = async (url, options, page) => {
             (page = 1)
         "
       >
-        USA sucks
+        Search
       </button>
     </div>
     <div>

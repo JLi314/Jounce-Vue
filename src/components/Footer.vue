@@ -17,15 +17,13 @@
         documentaries sorted by genre.
       </p>
       <p class="instructions1">
-        Note: The selection constantly updates to reflect the most relevant
-        documentaries. Additionally, documentary series, such as Cosmos, are not
-        included in the selection; only single standalone documentary "movies"
-        are available.
-      </p>
-      <p class="instructions1">
         3. Click on a poster you like and press the purchase button if you would
         like to buy it. You can see all your purchases in the cart section by
         clicking "Cart" in the navigation bar at the top of the page.
+      </p>
+      <p class="instructions1">
+        Fun Fact! The planets on the login page spin at different rates to
+        reflect the different lengths of days on each planet!
       </p>
     </div>
   </div>
